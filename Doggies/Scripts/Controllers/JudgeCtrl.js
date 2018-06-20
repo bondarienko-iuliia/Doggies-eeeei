@@ -202,7 +202,7 @@
     $scope.dogExhebitionParticipantChildren;
     $scope.Owners;
     $scope.parseObjectForExhebition = function (obj) {
-		console.log(obj);
+		//console.log(obj);
 		
         $scope.dogExhibitionParticipants = obj[0]; // участники мероприятия с их родителями и детьми
 
@@ -211,22 +211,32 @@
         //Foreach владельцы { Foreach собаки-участники{Foreach дети} }
         $scope.Owners.forEach(function (owner) {
 
-            $scope.dogExhibitionParticipants.forEach(function (dog) {
-                if (dog.UserId == owner.UserId) {	//сюда зайдет один раз при любых обстоятельствах(тк у собаки должен быть один хозяин),
-                    //поэтому здесь и будет forEach на определение детей собаки
+			$scope.dogExhibitionParticipants.forEach(function (dog) {
+			
 
+                if (dog.UserId == owner.Id) {	//сюда зайдет один раз при любых обстоятельствах(тк у собаки должен быть один хозяин),
+                    //поэтому здесь и будет forEach на определение детей собаки
+  //для каждой собаки-участника найдем владельца
+					console.log(owner.Id);
+                    dog.ownerName = owner.Surname + " " + owner.Name + " " + owner.Patronymic;
+					dog.ownerAddress = owner.Region + " " + owner.City + " " + owner.Address;
+
+					if (dog.Mother != null) {
+						dog.Mother.ownerName = owner.Surname + " " + owner.Name + " " + owner.Patronymic;
+					}
+					if (dog.Father != null) {
+						dog.Father.ownerName = owner.Surname + " " + owner.Name + " " + owner.Patronymic;
+					}
                     //временный массив детей
                     tmpChildren = [];
-					$scope.dogExhibitionParticipants.forEach(function (mayBeChild) {
-
-						if (mayBeChild.MotherId == dog.DogId || mayBeChild.FatherId == dog.DogId) {
-							tmpChildren.push(mayBeChild);
+					$scope.dogExhibitionParticipants.forEach(function (maybeChild) {
+						if (maybeChild.MotherId == dog.DogId || maybeChild.FatherId == dog.DogId) {
+							tmpChildren.push(maybeChild);
                         }
                     });
-                    dog.children = tmpChildren;
-                    //для каждой собаки-участника найдем владельца
-                    dog.ownerName = owner.UserSurname + " " + owner.UserName + " " + owner.UserPatronymic;
-                    dog.ownerAddress = owner.Region + " " + owner.City + " " + owner.Address;
+					dog.children = tmpChildren;
+				
+                  
 
 
                 }
@@ -234,7 +244,7 @@
             });
 		});
 		
-        console.log($scope.dogExhibitionParticipants);
+       console.log($scope.dogExhibitionParticipants);
         isloaded = true;
 		
     }
@@ -250,7 +260,7 @@
 			{
                 //var selectedDog = 
                     $scope.selectedDog = $scope.dogExhibitionParticipants[i];
-                //console.log(dog);
+				console.log($scope.selectedDog);
                 //console.log($scope.dogExhibitionParticipants[i]);
 				//$scope.exhebitionDataForSelectedDog.DogName = selectedDog.DogName;
 				//$scope.exhebitionDataForSelectedDog.VpkosOrLicenseNumber = selectedDog.VpkosOrLicenseNumber;
@@ -268,7 +278,7 @@
 			}
 			
 		});
-        console.log($scope.selectedDog);
+        //console.log($scope.selectedDog);
         
 	}
 
