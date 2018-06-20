@@ -1,0 +1,37 @@
+﻿
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>organization</title>
+</head>
+<body>
+	hello, I am an organization
+	<div>
+
+		@*<button ng-click="SetFilter(0)">Все</button>*@<button ng-click="SetFilter(2)">Новые</button><button ng-click="SetFilter(1)">Принятые</button><button ng-click="SetFilter(3)">Отклоненные</button>
+		<div @*ng-if="filter=='inProcess'"*@ ng-repeat="event in all">
+			@*{{event.requestState}}	{{event.dog.DogName}}*@
+			<div ng-if="filter==event.requestState"  @*ng-class="{Hide:filter==event.requestState}"*@>
+				<p>заявка на мероприятие</p>
+				<div style="padding:20px">Пользователь {{event.dog.User.Name}} посылает заявку на участие собаки {{event.dog.DogName}} в мероприятии "{{event.event.EventName}}"  </div>
+
+
+				<div style="padding:20px">
+					<button class="btn btn-success" ng-click="SetApprovalState(event.event.EventId,event.dog.DogId,1)">Принять</button><button class="btn btn-danger" ng-click="SetApprovalState(event.event.EventId,event.dog.DogId,3)">Отклонить</button>
+				</div>
+				<br />
+				<hr />
+				<br />
+				<br />
+			</div>
+
+
+		</div>
+
+	</div>
+</body>
+</html>

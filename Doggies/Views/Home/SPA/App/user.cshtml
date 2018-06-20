@@ -1,0 +1,22 @@
+﻿
+<p>Создание документов</p>
+
+<div>
+    Выберете мероприятие:
+    <div>
+        <select class="form-control"  ng-model="forDocument.eventName">
+            <option ng-repeat="event in events"  value="{{event.EventId}}">{{event.EventName}}</option>@*здесь цикл*@
+        </select>
+    </div>
+    <div ng-if="IsEvent()">
+        Выберете собаку:
+        <select class="form-control" ng-model="forDocument.dogName">
+            <option ng-repeat="dog in dogs" value="{{dog.DogId}}">{{dog.DogName}}</option>@*здесь цикл*@
+        </select>
+        Введите фамилию, имя, отчество сопровождающего:
+        <input class="form-control" type="text" name="leaderFIO" placeholder="Фамилия Имя Отчество" ng-model="forDocument.leaderFIO" />
+
+    </div>
+    <button class="btn btn-primary form-control" id="createDocument" ng-click="createDocument()">Создать документ</button>
+
+</div>

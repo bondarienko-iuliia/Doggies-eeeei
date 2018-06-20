@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>request</title>
+</head>
+<body>
+	<div>
+		make your request
+		<form action="/" method="post" class="BigForm">
+			<div>
+				<p>Выберете мероприятие</p>
+				<select class="form-control" ng-model="selectedEvent" ng-change="GetDogs()">
+					<option ng-repeat="event in events" value='{{event.EventId}}|{{event.OrganizationId}}'>{{event.EventName}}</option>
+				</select>
+				<div ng-show="IsEvent()">
+					<p>Выберете собаку для записи на мерприятие</p>
+					
+					<div class="DogThree DivHover NoRequest" ng-repeat="dog in dogs" ng-class="{InProcess: dog.RequestApprovalState==2,Accepted:dog.RequestApprovalState==1,Rejected:dog.RequestApprovalState==3,Selected:dog.DogId==selectedDog}" ng-click="SelectDog(dog.DogId, dog.RequestApprovalState)">
+					{{dog.DogName}}</div>
+				</div>
+				<div ng-if="IsDog()">
+
+					<input ng-if="RequestCanBeSend()" class="btn btn-primary form-control" type="button" name="name" value="отправить заявку" ng-click="SendRequest()"/>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</body>
+</html>

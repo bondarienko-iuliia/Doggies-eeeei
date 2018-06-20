@@ -1,0 +1,46 @@
+﻿
+<div>
+	название мероприятия:
+	<select ng-model="helper" ng-change="getDogsByEventAndSetEventType()">
+		<option ng-repeat="event in events" value="{{event.EventId}}">{{event.EventName}}</option>
+	</select>
+
+</div>
+<div ng-if="eventType == 1">
+	<table class="table table-bordered">
+		<tr><th>Имя собаки/Оценки</th><th ng-repeat="n in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]">{{n}}</th></tr>
+		<tr ng-repeat="dog in dogs">
+			<td>{{dog.DogName}}</td>
+			<td ng-repeat="mark in dog.Marks ">
+				<input type="text" ng-model="mark.mark" />
+			</td>
+		</tr>
+
+	</table>
+
+	<input class="btn" type="button" ng-click="CreateCookie()" value="Сохранить" />
+</div>
+
+<div ng-if="UserInRoles('user')"></div>
+
+
+<div ng-show="eventType == 2">
+
+    <select ng-model="selectedDogId" ng-change="getInfoForSelectedDog()" ng-show="isEventSelected()">
+        <option ng-repeat="dog in dogs" value="{{dog.DogId}}">{{dog.DogName}}</option>
+    </select>
+
+    <div ng-if="isDogSelected()">
+        {{selectedDog.DogName}}    -    {{selectedDog.VpkosOrLicenseNumber}}
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+

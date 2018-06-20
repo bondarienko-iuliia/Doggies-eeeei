@@ -1,0 +1,9 @@
+﻿<label>Login:</label>
+<input type="text" class="form-control" ng-model="username" />
+<div class="form-group has-feedback">
+    <input type="text" class="form-control" placeholder="Введите email " ng-model="email">
+    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+</div>
+<label>Password:</label>
+<input type="password" class="form-control" ng-model="password" />
+<button ng-click="register(username, password, email)">Зарегистрироваться</button>

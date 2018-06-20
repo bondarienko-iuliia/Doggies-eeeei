@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserProfile</title>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="Фамилия" ng-model="UserName" />
+        <input type="text" placeholder="Имя" ng-model="UserSurname" />
+        <input type="text" placeholder="Отчество" ng-model="UserPatronymic" />
+        <input type="text" placeholder="Регион" ng-model="Region" />
+        <input type="text" placeholder="Город" ng-model="City" />
+        <input type="text" placeholder="Адрес" ng-model="Address" />
+
+        <button class="btn btn-primary" id="newUserInfo" ng-click="newUserInfo(UserName,UserSurname,UserPatronymic,Region,City,Address)">Сохранить</button>
+    </div>
+</body>
+</html>
+

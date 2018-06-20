@@ -1,0 +1,32 @@
+﻿<div class="login-box" ng-if="!user">
+    <form class="login-box-body">
+        <p class="login-box-msg">Войдите для начала работы</p>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Email / Логин" ng-model="username">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Пароль" ng-model="password">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+                <a href="/resetPassword" class="text-center">Забыли пароль?</a>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <button class="btn btn-primary btn-block btn-flat" ng-click="tryLogin(username, password)">Войти</button>
+            </div>
+            <!-- /.col -->
+        </div>
+        <a href="/register" class="text-center">Зарегистрироваться</a>
+    </form>
+</div>
+<div class="box box-default" ng-if="user">
+    <div class="box-header with-border">
+        <h3 class="box-title">Вы уже авторизованны</h3>
+    </div>
+    <div class="box-body">
+        Если хотите зайти под другим пользователем <button ng-click="logout()">выйдите</button> из системы.
+    </div>
+</div>

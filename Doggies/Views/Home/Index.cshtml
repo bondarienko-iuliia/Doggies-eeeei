@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html ng-app="webApp">
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Приложение</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    @Styles.Render("~/Content/css") <base href="/" />
+</head>
+<body class="skin-blue-light layout-top-nav">
+	<nav class="navbar navbar-default ">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right ">
+				<li class="active"><a href="#">Главная</a></li>
+				<li><a href="/organization">Организации</a></li>
+				<li><a href="/judge">Судьи</a></li>
+				<li class="dropdown">
+					<a id="drop1" href="/user" class="dropdown-toggle" data-toggle="dropdown">
+						Профиль
+						<span class="caret"></span>
+					</a>
+
+
+					<ul ng-if="UserInRoles('user')" class="dropdown-menu">
+						<li><a href="/adddog">Добавить собаку</a></li>
+						<li><a href="/dog">Перечень всех собак</a></li>
+						<li><a href="/userProfile">Настройки профиля</a></li>
+						<li><a href="/request">Создать заявку</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Выход</a></li>
+					</ul>
+		
+		</li>
+		</ul>
+		</div>
+	</nav>
+	@*<div ng-if="UserInRoles('user')">
+		<a href="/request">создать заявку</a>
+	</div>*@
+		<div id="web-app" class="wrapper">
+			<div class="content-wrapper">
+				<div id="page" class="container" ng-view></div>
+			</div>
+		</div>
+		@Scripts.Render("~/bundles/assets")
+		@Scripts.Render("~/bundles/applications")
+</body>
+</html>

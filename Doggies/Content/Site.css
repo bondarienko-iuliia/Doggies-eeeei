@@ -1,0 +1,82 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*состояние запроса*/ 
+.NoRequest {
+	border: solid rgba(0, 0, 0, 0.15) 1px;
+	
+}
+.InProcess {
+	border: solid #feec21 1px;
+}
+.Accepted {
+	border: solid #2dd943 1px;
+}
+.Rejected {
+	border: solid #d72c2c 1px;
+}
+/*--------------------*/
+.Selected {
+
+
+	box-shadow: 0 2px 4px 0 rgba(0, 0,0, 0.20), 0 3px 10px 0 rgba(0, 0, 0, 0.15), 0 8px 15px 0 rgba(0, 0, 0, 0.05) !important;
+
+}
+/*выравнивание*/
+.DogThree {
+	float: left;
+	width: 30%;
+	margin: 1.6%;
+	border-radius: 10px;
+	padding: 10px;
+	text-align: center;
+
+}
+
+
+/*--------------------*/
+
+.DogThree:hover {
+	margin-top: 1.4%;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 3px 10px 0 rgba(0, 0, 0, 0.10);
+}
+
+button {
+	clear:both!important;
+}
+
+.BigForm {
+	width: 90%;
+	height:250px;
+	margin: 5%;
+	padding:2%;
+	text-align: center;
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15), 0 3px 15px 0 rgba(0, 0, 0, 0.10);
+}
+
+
+.Hide {
+	display:none;
+}
