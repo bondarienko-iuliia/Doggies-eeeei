@@ -50,7 +50,32 @@ function (
                     params: { eventId: eventId}
 
                 });
-        }
+		},
+		CheckConnection: function () {//вызов при смене типа события
+			return requestPromise(
+				{
+					method: "POST",
+					url: "/api/judge/CheckConnection",
+					
+
+				});
+		},
+		SetExhibitionMark: function (WorkingSkillsMark, ExterierMark, ChildrenMark, ParentsMark, dogId) {
+			return requestPromise(
+				{
+					method: "POST",
+					url: "/api/judge/SetExhibitionMark",
+					params: {
+						WorkingSkillsMark: WorkingSkillsMark,
+						ExterierMark: ExterierMark,
+						ChildrenMark: ChildrenMark,
+						ParentsMark: ParentsMark,
+						ChildrenMark: ChildrenMark,
+						dogId: dogId
+					}
+
+				});
+		},
     };
 
     return service;

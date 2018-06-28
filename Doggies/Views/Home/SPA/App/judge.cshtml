@@ -6,127 +6,130 @@
 	</select>
 </div>
 <div ng-if="eventType == 1">
+	
 	<table class="table table-bordered">
 		<tr><th>Имя собаки/Оценки</th><th ng-repeat="n in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]">{{n}}</th></tr>
 		<tr ng-repeat="dog in dogs">
 			<td>{{dog.DogName}}</td>
-			<td ng-repeat="mark in dog.Marks ">
-				<input type="text" ng-model="mark.mark" />
+			<td style=" margin:0!important; padding:0!important" ng-repeat="mark in dog.Marks ">
+				<input style="text-align:center;border:0 ; width:100%; height:30px;margin:0!important; padding:0!important" type="text" ng-model="mark.mark" />
 			</td>
 		</tr>
 	</table>
 	<input class="btn" type="button" ng-click="CreateCookie()" value="Сохранить" />
 </div>
-<div ng-if="UserInRoles('user')"></div>
+@*<div ng-if="UserInRoles('user')"></div>*@
 
-<div ng-show="eventType == 2">
-	<select ng-model="selectedDogId" ng-change="getInfoForSelectedDog()" ng-show="isEventSelected()">
-		<option ng-repeat="dog in dogs" value="{{dog.DogId}}">{{dog.DogName}}</option>
-	</select>
-	<div ng-if="isDogSelected()">
-		{{selectedDog.DogName}}    -    {{selectedDog.VpkosOrLicenseNumber}}
-	</div>
-	<table>
-		<tr>
-			<td>Порода</td>
-			<td>
-				{{selectedDog.Breed}}
-			</td>
-			<td>Кличка</td>
-			<td>{{selectedDog.DogName}}</td>
-			<td>Возрастная группа</td>
-			<td>{{selectedDog.DateOfBirth}}</td>
-			<td>Пол</td>
-			<td>{{selectedDog.Gender}}</td>
-		</tr>
-		<tr>
-			<td>№ВПКОС («Свид-ва» или «Справки»)</td>
-			<td>
-				{{selectedDog.VpkosOrLicenseNumber}}
-			</td>
-			<td>Окрас</td>
-			<td>{{selectedDog.Color}}</td>
-			<td>Дата рождения</td>
-			<td>{{selectedDog.DateOfBirth}}</td>
-		</tr>
-		<tr>
-			<td>Владелец</td>
-			<td>{{selectedDog.ownerName}}</td>
-		</tr>
-		<tr>
-			<td>Полевые дипломы</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>Оценки за рабочие качества</td>
-			<td><input type="text" placeholder="Введите оценку" /></td>
-		</tr>
-	</table>
+	<div ng-show="eventType == 2">
+		<select ng-model="selectedDogId" ng-change="getInfoForSelectedDog()" ng-show="isEventSelected()">
+			<option ng-repeat="dog in dogs" value="{{dog.DogId}}">{{dog.DogName}}</option>
+		</select>
+		<div ng-show="isDogSelected()">
+			<table>
+				<tr>
+					<td>Порода: </td>
+					<td>
+						{{selectedDog.Breed}}
+					</td>
+					<td>Кличка: </td>
+					<td>{{selectedDog.DogName}}</td>
+					<td>Возрастная группа: </td>
+					<td>{{selectedDog.Age}}</td>
+					<td>Пол: </td>
+					<td>{{selectedDog.Gender}}</td>
+				</tr>
+				<tr>
+					<td>№ВПКОС («Свид-ва» или «Справки»): </td>
+					<td>
+						{{selectedDog.VpkosOrLicenseNumber}}
+					</td>
+					<td>Окрас: </td>
+					<td>{{selectedDog.Color}}</td>
+					<td>Дата рождения: </td>
+					<td>{{selectedDog.DateOfBirth}}</td>
+				</tr>
+				<tr>
+					<td>Владелец: </td>
+					<td>{{selectedDog.ownerName}}</td>
+				</tr>
+				<tr>
+					<td>Полевые дипломы: </td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Оценки за рабочие качества: </td>
+					<td><input ng-model="ExhibitionMark.WorkingSkills" type="text" placeholder="Введите оценку" /></td>
+				</tr>
+			</table>
+			<div ><input ng-model="ExhibitionMark.ExterierMark"type="text" placeholder="Введите оценку" /></div>
+			<div class="row">
+				<div class="col-xs-5"></div>
+				<div class="col-xs-2"><h4>Происхождение: </h4></div>
+				<div class="col-xs-5"></div>
+			</div>
+			<table border="1">
+				<tr>
+					<th>Кличка</th>
+					<th>№ ВПКОС</th>
+					<th>Оценка экстерьера</th>
+					<th>Дипломы</th>
+					<th>Владелец</th>
+				</tr>
+				<tr>
+					<td>{{selectedDog.Mother.DogName}}</td>
+					<td>{{selectedDog.Mother.VpkosOrLicenseNumber}}</td>
+					<td>{{selectedDog.Mother.DogAchivment.ExterierMark}}</td>
+					<td>{{selectedDog.Mother.Diploma.DiplomaName}}</td>
+					<td>{{selectedDog.Mother.ownerName}}</td>
+				</tr>
+				<tr>
+					<td>{{selectedDog.Father.DogName}}</td>
+					<td>{{selectedDog.Father.VpkosOrLicenseNumber}}</td>
+					<td>{{selectedDog.Father.DogAchivment.ExterierMark}}</td>
+					<td>{{selectedDog.Father.Diploma.DiplomaName}}</td>
+					<td>{{selectedDog.Father.ownerName}}</td>
+				</tr>
+			</table>
+			<div class="row">
+				<div class="col-xs-3">Оценка за происхождение</div>
+				<div class="col-xs-1" ><input ng-model="ExhibitionMark.ParentsMark" type="text" placeholder="Введите оценку" /></div>
 
-	<div class="row">
-		<div class="col-xs-5"></div>
-		<div class="col-xs-2"><h4>Происхождение</h4></div>
-		<div class="col-xs-5"></div>
-	</div>
-	<table border="1">
-		<tr>
-			<th>Кличка</th>
-			<th>№ ВПКОС</th>
-			<th>Оценка экстерьера</th>
-			<th>Дипломы</th>
-			<th>Владелец</th>
-		</tr>
-		<tr>
-			<td>{{selectedDog.Mother.DogName}}</td>
-			<td>{{selectedDog.Mother.VpkosOrLicenseNumber}}</td>
-			<td>{{selectedDog.Mother.DogAchivment.ExterierMark}}</td>
-			<td>{{selectedDog.Mother.Diploma.DiplomaName}}</td>
-			<td>{{selectedDog.Mother.ownerName}}</td>
-		</tr>
-		<tr>
-			<td>{{selectedDog.Father.DogName}}</td>
-			<td>{{selectedDog.Father.VpkosOrLicenseNumber}}</td>
-			<td>{{selectedDog.Father.DogAchivment.ExterierMark}}</td>
-			<td>{{selectedDog.Father.Diploma.DiplomaName}}</td>
-			<td>{{selectedDog.Father.ownerName}}</td>
-		</tr>
-	</table>
-	<div class="row">
-		<div class="col-xs-3">Оценка за происхождение</div>
-		<div class="col-xs-1"><input type="text" placeholder="Введите оценку" /></div>
-	</div>
+			</div>
 
-	<div class="row">
-		<div class="col-xs-5"></div>
-		<div class="col-xs-2"><h4>Классные потомки</h4></div>
-		<div class="col-xs-5"></div>
-	</div>
-	<table border="1">
-		<tr>
-			<th rowspan="2">№</th>
-			<th rowspan="2">Кличка</th>
-			<th rowspan="2">Владелец</th>
-			<th colspan="2">Экстерьер</th>
-			<th colspan="2">Диплом</th>
-			<th rowspan="2">Всего баллов</th>
-		</tr>
-		<tr>
-			<th>Оценка</th>
-			<th>Балл</th>
-			<th>Степень</th>
-			<th>Балл</th>
-		</tr>
-		<tr ng-repeat="dog in selectedDog.children">
-			<td></td>
-			<td>{{dog.DogName}}</td>
-			<td>{{dog.ownerName}}</td>
-			<td><div ng-repeat="ach in dog.DogAchievment">{{ach.ExterierMark}}</div></td>
-			<td><div ng-repeat="ach in dog.DogAchievment">{{ach.ExterierBall}}</div></td>
-			<td><div ng-repeat="diploma in dog.Diploma">{{diploma.DiplomaDegree}}</div></td>
+			<div class="row">
+				<div class="col-xs-5"></div>
+				<div class="col-xs-2"><h4>Классные потомки</h4></div>
+				<div class="col-xs-5"></div>
+			</div>
+			<table border="1">
+				<tr>
+					<th rowspan="2">№</th>
+					<th rowspan="2">Кличка</th>
+					<th rowspan="2">Владелец</th>
+					<th colspan="2">Экстерьер</th>
+					<th colspan="2">Диплом</th>
+					<th rowspan="2">Всего баллов</th>
+				</tr>
+				<tr>
+					<th>Оценка</th>
+					<th>Балл</th>
+					<th>Степень</th>
+					<th>Балл</th>
+				</tr>
+				<tr ng-repeat="dog in selectedDog.children">
+					<td></td>
+					<td>{{dog.DogName}}</td>
+					<td>{{dog.ownerName}}</td>
+					<td><div ng-repeat="ach in dog.DogAchievement">{{ach.ExterierMark}}</div></td>
+					<td><div ng-repeat="ach in dog.DogAchievement">{{ach.ExterierBall}}</div></td>
+					<td><div ng-repeat="diploma in dog.Diploma">{{diploma.DiplomaDegree}}</div></td>
 
-			<td><div ng-repeat="diploma in dog.Diploma">{{diploma.DiplomaBall}}</div></td>
-			<td></td>
-		</tr>
-	</table>
+					<td><div ng-repeat="diploma in dog.Diploma">{{diploma.DiplomaBall}}</div></td>
+					<td></td>
+				</tr>
+			</table>
+			<div ><input ng-model="ExhibitionMark.ChildrenMark" type="text" placeholder="Введите оценку" /></div>
+			<div><input type="button" ng-click="SetExhibitionMark()" value="Сохранить" /></div>
+		</div>
 </div>
 

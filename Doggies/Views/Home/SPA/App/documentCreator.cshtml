@@ -1,0 +1,26 @@
+﻿
+@{
+	Layout = null;
+}
+
+при выборе мероприятия проверяется его тип. В зависимости от типа выбирается документ, который создается,
+но пока, создадим только для выставки
+<div>
+	<div>
+		Выберете мероприятие:
+	</div>
+	<select ng-model="selectedEvent" ng-change="GetInfoForDocument()">
+		<option ng-repeat="event in events" value='{{event.EventId}}|{{event.EventType}}'>{{event.EventName}}</option>
+	</select>
+</div>
+<div ng-if="selectedEvent!=''">
+	<form action="/" method="get">
+		<p>Выберете учасьников для формирования документа:</p>
+		<div ng-repeat="participant in dogExhibitionParticipants">
+			{{participant.ownerName}} с собакой {{participant.DogName}} <span style="float:right"> <input type="checkbox" name="{{participant.UserId}}|{{participant.DogId}}" value="1" checked></span>
+		</div>
+		<div>
+			<input type="button" name="name" value="Распечатать" ng-click="CreateDocument()"/>
+		</div>
+	</form>
+</div>

@@ -60,6 +60,10 @@ namespace Doggies
             {
                 return new RequestManager(context.Get<Concrete>());
             });
+            app.CreatePerOwinContext<DocumentCreatorManager>((IdentityFactoryOptions<DocumentCreatorManager> options, IOwinContext context) =>
+            {
+                return new DocumentCreatorManager(context.Get<Concrete>());
+            });
         }
      
 
