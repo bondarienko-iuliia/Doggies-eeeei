@@ -86,7 +86,6 @@ namespace Doggies.Models.Field
                         if (dog.DogId == dip.DogId)
                         {
                             dog.Diploma.Add(dip);
-
                         }
                     }
                     foreach (DogAchievment dogAch in dogAchievements)
@@ -94,11 +93,8 @@ namespace Doggies.Models.Field
                         if (dog.DogId == dogAch.DogId)
                         {
                             dog.DogAchievment.Add(dogAch);
-
                         }
                     }
-
-
                     // прикрепляем к собаким родителей
                     foreach (Dog dog2 in dogs)
                     {
@@ -108,12 +104,7 @@ namespace Doggies.Models.Field
                         }
                         if (dog.FatherId == dog2.DogId)
                             dog.Father = dog2;
-
-
-
                     }
-
-
                 }
       
                 allINeed.Add(dogs);

@@ -25,10 +25,9 @@ namespace Doggies.Models.Field
             }
             return dogs;
         }
-        public async Task<List<Dog>> addDog(string dogName, string vpkosOrLicenceNumber, bool isMale, string color, string breed, DateTime dateOfBirth, int userId, int motherId, int fatherId)
+        public async Task<List<Dog>> addDog(string dogName, string vpkosOrLicenceNumber, bool isMale,
+            string color, string breed, DateTime dateOfBirth, int userId, int motherId, int fatherId)
         {
-
-
             using (var cnt = await Concrete.OpenConnectionAsync())
             {
                 await cnt.ExecuteAsync(

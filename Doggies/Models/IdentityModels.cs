@@ -18,7 +18,7 @@ namespace Doggies.Models
     {
         public UserRole() : base() { }
     }
-
+    // Позволяет разграничивать некоторые особенности пользователей
     public class UserClaim : IdentityUserClaim<int>
     {
         public UserClaim() : base() { }
@@ -86,8 +86,9 @@ namespace Doggies.Models
 
 
     }
-
+    //Если бд уже создана
     public class IdentityDbInit : NullDatabaseInitializer<ApplicationDbContext> { }
+    //Если бд создаётся впервые
     //public class IdentityDbInit : CreateDatabaseIfNotExists<ApplicationDbContext> { }
 
     public class ApplicationDbContext : IdentityDbContext<User, Role, int, UserLogin, UserRole, UserClaim>

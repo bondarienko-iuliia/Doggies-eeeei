@@ -14,17 +14,14 @@ namespace Doggies
 {
     public partial class Startup
     {
-        // Дополнительные сведения о настройке аутентификации см. на странице https://go.microsoft.com/fwlink/?LinkId=301864
+        
         public void Configuration(IAppBuilder app)
         {
             app.CreatePerOwinContext<Concrete>(CreateConcrete);
-
-            // Сначала настраиваем Identity, т.к. его тип могут понадобиться в типах предметной области
             ConfigureAuth(app);
             DomainConfiguration(app);
         }
 
-        // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
             app.CreatePerOwinContext<ApplicationDbContext>(() => ApplicationDbContext.Create(ConnectionName));
@@ -40,23 +37,6 @@ namespace Doggies
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/account/login")
             });
-            // Use a cookie to temporarily store information about a user logging in with a third party login provider
-            //app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
-
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
-
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
-
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
-
-            //app.UseGoogleAuthentication();
         }
         public void DomainConfiguration(IAppBuilder app)
         {
@@ -95,7 +75,7 @@ namespace Doggies
         }
 
         /// <summary>
-        /// Метод возвращает строку соединения по умолчанию
+        /// Получаем из "Web.config" информацию о подключении
         /// </summary>
         /// <returns>Объект строки соединения</returns>
         public ConnectionStringSettings GetConnectionStringSettings()

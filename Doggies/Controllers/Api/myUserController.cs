@@ -100,7 +100,8 @@ namespace Doggies.Controllers.Api
         public async Task<IHttpActionResult> newUserInfo(NewUserInfoModel model)
         {
 
-            var temp = await myUserManager.newUserInfo(CurrentUser.Id, model.UserName, model.UserSurname, model.UserPatronymic, model.Region, model.City, model.Address);
+            var temp = await myUserManager.newUserInfo(CurrentUser.Id, model.UserName, model.UserSurname, 
+                model.UserPatronymic, model.Region, model.City, model.Address);
             return WrapSuccess();
         }
 

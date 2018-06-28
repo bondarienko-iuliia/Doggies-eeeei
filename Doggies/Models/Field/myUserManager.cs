@@ -158,7 +158,8 @@ namespace Doggies.Models.Field
             }
 
         }
-        public async Task<List<myUser>> newUserInfo(int userId, string userName, string userSurname, string userPatronymic, string region, string city, string address)
+        public async Task<List<myUser>> newUserInfo(int userId, string userName, string userSurname, 
+            string userPatronymic, string region, string city, string address)
         {
 
 
