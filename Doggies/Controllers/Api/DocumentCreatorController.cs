@@ -34,6 +34,15 @@ namespace Doggies.Controllers.Api
             return WrapSuccess(forExhibition);
         }
 
+        [AllowAnonymous]
+        [Route("createDocument")]
+        [HttpPost]
+        public async Task<IHttpActionResult> createDocument(object forDocument)
+        {
+            /////////////меняяяяяяяяяяяяяяяяяяяяять на currentUserId
+            List<object> forExhibition = await DocumentCreatorManager.DogsInExhebitionWhithDiplomaAndAchievment(forDocument);
+            return WrapSuccess(forExhibition);
+        }
         protected DocumentCreatorManager DocumentCreatorManager
         {
 

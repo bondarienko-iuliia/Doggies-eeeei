@@ -33,6 +33,16 @@
 
 					});
 			},
+			createDocument: function (forDocument) {
+				return requestPromise(
+					{
+						method: "POST",
+						url: "/api/documentCreator/CreateDocument",
+						data: forDocument,
+						
+					}
+				);
+			}
 
 		};
 

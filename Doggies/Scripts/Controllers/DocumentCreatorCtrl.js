@@ -4,6 +4,7 @@
 	$scope.eventType;
 	$scope.dogExhibitionParticipants;
 	$scope.SelectedForDocument;//сюда приходит инф-я об отмеченных участниках
+	$scope.FilteredParticipants;//участники, отмеченные галочками
 	var isloaded = false;
 
 
@@ -78,18 +79,31 @@
 
 	$scope.CreateDocument = function ()
 	{
-		if (isloaded)
+		///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!костыль!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		$scope.SelectedForDocument.push({ UserId: 1, DogId: 1, Checked: true });//Шарик
+		$scope.SelectedForDocument.push({ UserId: 1, DogId: 3, Checked: true });//Изабель
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		if (isloaded===true)
 		{
 			//для каждого, кто был отмечен галочкой
 			$scope.dogExhibitionParticipants.forEach(
 				function (dog)
 				{
-
+					$scope.SelectedForDocument.forEach(function (selected)
+					{
+						if (selected.Checked == true && selected.UserId == dog.UserId && selected.DogId == dog.DogId)
+					{//отбор по id владельца и собаки
+						$scope.FilteredParticipants.push(dog);
+					}});
+					
 				}
-				);
+			);
+			
 		}
 		isloaded = false;
 	}
-
+$scope.createDocument = function () {
+	docService.createDocument($scope.$scope.FilteredParticipants);
+			}
 		
 }]);
