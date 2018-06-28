@@ -63,6 +63,10 @@ webApp.config(["$routeProvider", "$locationProvider",
 				templateUrl: 'template/app/request',
 				controller: 'RequestCtrl'
 			}).
+			when('/documentCreator', {
+				templateUrl: 'template/app/documentCreator',
+				controller: 'DocumentCreatorCtrl'
+			}).
             otherwise({
                 redirectTo: '/'
             });

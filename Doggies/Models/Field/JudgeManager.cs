@@ -58,6 +58,14 @@ namespace Doggies.Models.Field
             }
             return dogs;
         }
+
+        public async Task<int> CheckConnection()
+        {
+            using (var cnt = await Concrete.OpenConnectionAsync())
+            {
+                return 1;
+            }    
+        }
         #endregion
         #region Выставка
         public async Task<List<object>> FillListsForExhebition(int eventId)
@@ -124,7 +132,25 @@ namespace Doggies.Models.Field
             }
 
         }
+        public async Task SetExhibitionMark(decimal WorkingSkillsMark, decimal ExterierMark, decimal ChildrenMark,decimal ParentsMark,int dogId)
+        {
+            using (var cnt = await Concrete.OpenConnectionAsync())
+            {
+                await cnt.ExecuteAsync(
+                   sql: "dbo.SetExhibitionMark",
+                   commandType: CommandType.StoredProcedure,
+                   param: new
+                   {
+                       WorkingSkillsMark,
+                       ExterierMark,
+                       ChildrenMark,
+                       ParentsMark,
+                       dogId
+                   }
+               );
+            }
 
+        }
         #endregion
     }
 }

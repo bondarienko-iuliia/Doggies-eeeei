@@ -53,6 +53,22 @@ namespace Doggies.Controllers.Api
             List<object> users= await JudgeManager.FillListsForExhebition(eventId);
             return WrapSuccess(users);
         }
+        [AllowAnonymous]
+        [Route("CheckConnection")]
+        [HttpPost]
+        public async Task<IHttpActionResult> CheckConnection()
+        {
+            int result= await JudgeManager.CheckConnection();
+            return WrapSuccess(result);
+        }
+        [AllowAnonymous]
+        [Route("SetExhibitionMark")]
+        [HttpPost]
+        public async Task<IHttpActionResult> SetExhibitionMark(decimal WorkingSkillsMark, decimal ExterierMark, decimal ChildrenMark, decimal ParentsMark, int dogId)
+        {
+            await JudgeManager.SetExhibitionMark( WorkingSkillsMark, ExterierMark,  ChildrenMark, ParentsMark,  dogId);
+            return WrapSuccess();
+        }
         protected JudgeManager JudgeManager
         {
             get

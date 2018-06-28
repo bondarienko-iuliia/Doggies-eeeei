@@ -223,6 +223,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Abstract\BaseApiController.cs" />
     <Compile Include="Controllers\Api\AccountController.cs" />
+    <Compile Include="Controllers\Api\DocumentCreatorController.cs" />
     <Compile Include="Controllers\Api\DogController.cs" />
     <Compile Include="Controllers\Api\myUserController.cs" />
     <Compile Include="Controllers\Api\JudgeController.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApiResponeWrap.cs" />
     <Compile Include="Models\Field\Diploma.cs" />
+    <Compile Include="Models\Field\DocumentCreatorManager.cs" />
     <Compile Include="Models\Field\DogAchievment.cs" />
     <Compile Include="Models\Field\ExhebitionDocument.cs" />
     <Compile Include="Models\Field\myDocument.cs" />
@@ -262,7 +264,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\Controllers\DocumentCreatorCtrl.js" />
     <Content Include="Scripts\Controllers\OrganizationCtrl.js" />
+    <Content Include="Scripts\Services\DocumentCreatorService.js" />
     <Content Include="Scripts\Services\DogService.js" />
     <Content Include="Scripts\Controllers\RequestCtrl.js" />
     <Content Include="Scripts\Services\OrganizationService.js" />
@@ -334,6 +338,7 @@
     <Content Include="Views\Shared\CommonView.cshtml" />
     <Content Include="Views\Home\SPA\App\organization.cshtml" />
     <Content Include="Views\Home\SPA\App\request.cshtml" />
+    <Content Include="Views\Home\SPA\App\documentCreator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

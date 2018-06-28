@@ -25,7 +25,7 @@ textarea {
 
 /*состояние запроса*/ 
 .NoRequest {
-	border: solid rgba(0, 0, 0, 0.15) 1px;
+	border: solid rgb(52, 137, 242) 1px;
 	
 }
 .InProcess {
